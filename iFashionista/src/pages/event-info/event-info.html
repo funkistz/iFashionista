@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar no-border-bottom color="primary">
+    <ion-title text-capitalize>Event : {{ title }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card>
+    <img [src]="thumbnail"/>
+    <ion-card-content>
+      <h3>{{ description }}</h3>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+      <button ion-button icon-right color="accent" block end (click)="productList( title )">
+        Browse Catalog
+      </button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,22 @@
+<ion-menu [content]="content"  color="primary">
+
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>iFashionista</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="menu-content">
+    <ion-list no-lines>
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)" color="primary">
+        {{p.title}}
+      </button>
+      <button ion-item (click)="logOut()" color="primary">
+        Logout
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

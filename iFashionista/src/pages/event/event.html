@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar no-border-bottom color="primary">
+    <!-- <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-buttons left>
+        <button ion-button icon-only>
+          <ion-icon name="calendar"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title>Event</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-item-sliding *ngFor="let event of eventList | async">
+
+      <ion-item class="wrap" (click)="editEvent(event)">
+        <ion-thumbnail item-start>
+          <img [src]="event.thumbnail">
+        </ion-thumbnail>
+        <h2>{{event.name}}</h2>
+        <p>{{event.description}}</p>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" icon-left (click)="removeEvent(event.$key)">
+          <ion-icon name="ios-trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+      <!-- <ion-icon name="more" item-right (click)="showOptions(product.$key, product.title)"></ion-icon> -->
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab (click)="addEvent()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>

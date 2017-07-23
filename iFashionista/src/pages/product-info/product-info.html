@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{ product.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div style="display:flex; flex-direction:column;justify-content:center">
+    <img [src]="product.thumbnail" *ngIf="product.id"/>
+    <img [src]="captureDataUrl" *ngIf="captureDataUrl"/>
+    <button ion-button (click)="capture()" *ngIf="!product.id">Choose an Image</button>
+  </div>
+
+  <input type="hidden" [(ngModel)]="product.id" />
+
+  <ion-list no-lines>
+
+    <ion-item no-padding margin-top>{{ product.name }}</ion-item>
+
+    <ion-item no-padding>RM {{ product.price }}</ion-item>
+
+    <div margin-top style="clear: both;">{{ product.description }}</div>
+
+    <ion-item class="wrap" no-padding margin-top>
+      <h4>Events</h4>
+      <ion-badge *ngFor="let tag of product.tags" text-capitalize>{{tag}}</ion-badge>
+    </ion-item>
+
+    <ion-item class="wrap" no-padding>
+      <h4>Colors</h4>
+      <ion-badge *ngFor="let color of product.colors" text-capitalize>{{color}}</ion-badge>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
+
+<ion-footer *ngIf="!outfitView">
+  <ion-toolbar>
+      <button ion-button icon-right color="accent" block end (click)="addOutfit()">
+        Add to My Outfit
+      </button>
+  </ion-toolbar>
+</ion-footer>

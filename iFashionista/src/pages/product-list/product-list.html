@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar no-border-bottom color="primary">
+    <!-- <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-buttons left>
+        <button ion-button icon-only>
+          <ion-icon name="calendar"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title text-capitalize>{{ title }} Product List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Choose Colors</ion-label>
+      <ion-select #C (ionChange)="filterProduct(C.value,'colors')" text-capitalize >
+        <ion-option *ngFor="let color of colors | async" [value] = "color.$key">
+          {{color.$key}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item-sliding *ngFor="let product of products | async">
+
+      <ion-item class="wrap">
+        <ion-thumbnail item-start>
+          <img [src]="product.thumbnail">
+        </ion-thumbnail>
+        <h2>{{product.name}}</h2>
+        <p>RM {{product.price}}</p>
+        <ion-badge *ngFor="let tag of product.tags | keys" text-capitalize>{{tag}}</ion-badge>
+      </ion-item>
+
+    </ion-item-sliding>
+
+  </ion-list>
+
+</ion-content>

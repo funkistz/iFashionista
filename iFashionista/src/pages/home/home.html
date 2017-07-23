@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-navbar no-border-bottom color="primary">
+    <!-- <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-buttons left>
+        <button ion-button icon-only>
+          <ion-icon name="shirt"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top color="primary">
+    <ion-segment [(ngModel)]="outfit" color="light">
+      <ion-segment-button value="events">
+        Event
+      </ion-segment-button>
+      <ion-segment-button value="colors">
+        Color
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+<div [ngSwitch]="outfit">
+  <ion-list *ngSwitchCase="'events'">
+
+    <ion-item>
+      <ion-label>Choose Event</ion-label>
+      <ion-select #C (ionChange)="filterProduct(C.value,'tags')" text-capitalize >
+        <ion-option *ngFor="let tag of tags | async" [value] = "tag.$key">
+          {{tag.$key}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item-sliding *ngFor="let product of products | async">
+
+      <ion-item class="wrap" (click)="editProduct(product)">
+        <ion-thumbnail item-start>
+          <img [src]="product.thumbnail">
+        </ion-thumbnail>
+        <h2>{{product.name}}</h2>
+        <p>RM {{product.price}}</p>
+        <ion-badge *ngFor="let tag of product.tags | keys" text-capitalize>{{tag}}</ion-badge>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" icon-left (click)="removeProduct(product.$key)">
+          <ion-icon name="ios-trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+      <!-- <ion-icon name="more" item-right (click)="showOptions(product.$key, product.title)"></ion-icon> -->
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'colors'">
+
+    <ion-item>
+      <ion-label>Choose Colors</ion-label>
+      <ion-select #C (ionChange)="filterProduct(C.value,'colors')" text-capitalize >
+        <ion-option *ngFor="let color of colors | async" [value] = "color.$key">
+          {{color.$key}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item-sliding *ngFor="let product of products | async">
+
+      <ion-item class="wrap" (click)="editProduct(product)">
+        <ion-thumbnail item-start>
+          <img [src]="product.thumbnail">
+        </ion-thumbnail>
+        <h2>{{product.name}}</h2>
+        <p>RM {{product.price}}</p>
+        <ion-badge *ngFor="let color of product.colors | keys" text-capitalize>{{color}}</ion-badge>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" icon-left (click)="removeProduct(product.$key)">
+          <ion-icon name="ios-trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+      <!-- <ion-icon name="more" item-right (click)="showOptions(product.$key, product.title)"></ion-icon> -->
+
+    </ion-item-sliding>
+
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab (click)="addItem()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</div>
+</ion-content>

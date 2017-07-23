@@ -1,0 +1,123 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.menu-content{
+  background-color: #E91E63;
+}
+
+.card-thumbnail{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.thumbnail-frame{
+  position: relative;
+  padding-bottom: 100%;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.button-image{
+  height: 100px;
+}
+
+.button-image ion-icon{
+  font-size: 100px;
+}
+
+.ios, .md {
+
+    ion-label[floating] {
+        margin-left: 10px;
+    }
+
+    .input-has-focus, .input-has-value{
+
+      ion-label[floating] {
+          margin-left: 0px;
+      }
+
+    }
+
+    .item-input .item-inner {
+      border-bottom-color: transparent !important;
+      box-shadow: none !important;
+      padding-right: 0;
+    }
+
+    ion-input, ion-select, ion-textarea {
+        background-color: #f2f2f2;
+        padding: 5px 10px;
+    }
+
+    .invalid {
+        border: 1px solid #ea6153;
+    }
+
+}
+
+.badge-md{
+  background-color: color($colors, primary);
+}
+
+ion-item.item-input {
+    padding-left: 0;
+}
+
+ion-item.item-select {
+    padding-left: 0;
+}
+
+ion-list ion-item.item-select {
+    padding-left: 0;
+}
+
+ion-list ion-item.item-select .item-inner{
+    padding-left: 16px;
+}
+
+ion-select {
+    max-width: 100%;
+}
+
+ion-item.wrap ion-label{
+  white-space: normal;
+}
+
+ion-item.wrap ion-label ion-badge{
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+.wrap ion-label{
+  white-space: normal;
+}
+
+.wrap ion-label ion-badge{
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+ion-chip.chip-md{
+  margin-right: 4px;
+}
+
+ion-chip span{
+  padding-left: 10px;
+  padding-right: 10px;
+}
